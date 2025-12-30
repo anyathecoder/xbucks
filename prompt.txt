@@ -1,0 +1,127 @@
+Develop a cross-platform neobank application using Python (Kivy) that runs on Android, iOS, and Desktop.
+The system is powered by a custom decentralized blockchain with a novel Proof of Diplomacy (PoD) consensus protocol, supporting multi-currency fiat tokens, crypto, P2P lending, savings, and instant cross-border transfers.
+
+Key Features:
+
+1. Cross-Platform Frontend
+
+- Kivy-based UI (single codebase for Android, iOS, Desktop).
+
+- Wallet interface: balances, transaction history, transfers, loan requests, and savings dashboards.
+
+- Secure key management (private keys stored encrypted, platform keystores where available).
+
+2. Blockchain Layer (XBucks)
+
+- Native blockchain with PoD consensus:
+
+- Hybrid federated voting + stake + one-time PoW puzzles for validator credibility.
+
+- Validators are KYC/AML verified.
+
+- Multi-round voting, supermajority (>⅔) for finality.
+
+- Support for multiple fiat token types (USD, EUR, etc.) and native XBucks crypto.
+
+- Smart contracts for P2P lending and savings pools.
+
+3. Financial Services
+
+- Fiat deposits & withdrawals: via Rapyd API integration.
+
+- Cross-currency swaps: on-chain AMM or trusted liquidity provider.
+
+- Crypto ↔ Fiat on/off ramps (via Rapyd + stablecoins).
+
+- Peer-to-Peer lending: borrowers create requests, lenders fund via smart contracts.
+
+- Savings accounts: earn yield from lending pool or protocol-defined rewards.
+
+4. Security & Compliance
+
+- End-to-end encryption of transactions.
+
+- Private key custody stays with users.
+
+- Validator KYC enforcement (PoD governance).
+
+- Regulatory-ready logging and audit trail.
+
+Technical Requirements:
+---------------------------
+Frontend: Python (Kivy), packaged with Buildozer (Android), Kivy iOS toolchain, PyInstaller (Desktop).
+
+Blockchain: Custom Python-based blockchain module implementing PoD consensus.
+
+APIs:
+- Rapyd for fiat rails (deposits/withdrawals, currency conversion).
+
+- Internal API for node RPC (transaction submission, querying balances).
+
+- Smart Contracts: Python-based contract layer for lending/savings.
+
+- Storage: On-chain ledger; optional off-chain indexer for UI queries.
+
+Milestones & Deliverables:
+----------------------------
+Phase 1 – Foundations
+ - Set up project repo and CI/CD pipeline.
+
+ - Initialize Kivy frontend project (multi-platform UI boilerplate).
+
+ - Create basic wallet interface (generate keys, display balance, send/receive placeholder transactions).
+
+Phase 2 – Blockchain Core (PoD)
+ - Implement blockchain ledger structure (blocks, transactions, accounts).
+
+ - Implement PoD consensus algorithm:
+
+ - Block proposer selection (weighted by stake + reliability).
+
+ - Multi-round voting with >⅔ finality.
+
+ - Validator weight adjustments via stake & one-time PoW.
+
+ - Unit tests for consensus stability and fork prevention.
+
+Phase 3 – Financial Layer
+ - Implement multi-currency tokens (USD, EUR, etc.) on blockchain.
+
+ - Add cross-currency transfers (AMM-based or oracle-priced).
+
+ - Integrate Rapyd API for fiat deposits/withdrawals.
+
+ - Implement crypto-to-fiat swaps with Rapyd and on-chain stablecoins.
+
+Phase 4 – Lending & Savings
+ - Smart contract system (Python-based).
+
+ - P2P Lending contracts:
+   * Borrower posts loan terms.
+   * Lenders fund loan.
+   * Contract enforces repayment with interest.
+
+ - Savings contracts:
+   * Users lock tokens.
+   * Interest distributed periodically from lending pool.
+
+Phase 5 – Security & Compliance
+ - Encrypted wallet storage (local device + platform keystore).
+
+ - KYC/AML enforcement for validators and fiat operations.
+
+ - Logging and audit trail for compliance.
+
+ - Security review of consensus and contracts.
+
+Phase 6 – Polishing & Deployment
+ - Build for Android, iOS, and Desktop.
+
+ - UI/UX refinement (transaction history, charts, lending dashboards, mining dashboards, account settings).
+
+ - Integrate notifications for transactions and loan events.
+
+-  Deploy testnet for blockchain + release alpha version of app.
+
+👉 Instruction to Vibe Coder / AI Agent:
+“Please follow the milestones strictly in order. At each phase, generate production-ready, modular, well-documented code in Python. Ensure Rapyd integration is correct for deposits/withdrawals, and test blockchain consensus thoroughly before implementing financial services. Always provide unit tests and security considerations per milestone.”

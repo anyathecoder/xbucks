@@ -1,0 +1,21 @@
+https://www.vtpass.com/documentation/
+https://docs.vpay.africa/vpay-api-specification-basic-gude/
+
+# ---- TEST MULTIPLE INSTANCES ----
+def benchmark_instances():
+    results = {}
+    for i in range(1, 6):
+        start = time.time()
+        manager = AccountManager(account_key=f"test_key_{i}", db_user="root", db_pass="", db_host="localhost")
+        manager.add_new_currency("Bitcoin", "BTC", default=True, kyc_auth=True, balance=10.5)
+        manager.add_new_currency("Ethereum", "ETH", balance=5.3)
+        snapshot = manager.get_snapshot()
+        elapsed = time.time() - start
+        results[i] = (elapsed, snapshot)
+    return results
+
+
+if __name__ == "__main__":
+    perf = benchmark_instances()
+    for k, v in perf.items():
+        print(f"Instance {k} ran in {v[0]:.4f}s, Snapshot: {v[1]}")

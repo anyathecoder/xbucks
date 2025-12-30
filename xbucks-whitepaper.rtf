@@ -1,0 +1,83 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Calibri;}{\f2\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red5\green99\blue193;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa160\sl259\slmult0\qc\b\f0\fs52\lang9 XBucks: A serverless digital banking system\par
+\b0\fs36 Michael Anya\par
+{\cf1\ul\fs32{\field{\*\fldinst{HYPERLINK "mailto:mikanovando@gmail.com"}}{\fldrslt{mikanovando@gmail.com}}}}\f0\fs32\par
+\par
+\ul\b\fs28 Abstract\par
+
+\pard\sa160\sl259\slmult0\qc\ulnone\b0 In this paper, I propose a system that offers banking services without a central figure or an intermediary. To preserve the integrities of fiat currencies, traditional financial institutions provide a centralized solution requiring trust, but the history of fiat currencies is full of breaches of that trust. Observing all the cataclysm that has befallen the economies of many countries in the world, I have come to realize that what is needed to preserve the integrity of money and financial systems in a country is not really trust, but cryptographic proofs that mandate all participants to be honest. \par
+
+\pard\sa160\sl259\slmult0\qc Furthermore, borrowing a leaf from Jack P. Dorsey\rquote s Web 5.0 technology, I have designed a serverless, Sybil \f1\endash\f0  resistant and Byzantine fault-tolerant digital banking system that will use its native cryptocurrency in its operations, thereby creating a financial universe on the internet without any form of centralization. I chose the name \f1\ldblquote\f0 Titanium\f1\rdblquote\f0 , which represents total metallic strength, as well as embodies our system\f1\rquote\f0 s nature of zero \f1\endash\f0  fault and error \f1\endash\f0  free system.\par
+\par
+
+\pard 
+{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec{\pntxta.}}
+\fi-360\li720\sa160\sl259\slmult0\b\fs40 Introduction:\par
+
+\pard\li720\sa160\sl259\slmult0\b0\fs28 Most commercial activities in the world relies on the Internet and other communication systems. In my opinion, I think we're at the stage where people are ready to use the Internet as their main financial repository. To protect most information exchanged online, an encryption standard is used whereby a private and public key is computed using mathematical algorithms and formulas, to encrypt and decrypt the data when on transit. It helps to preserve security, but it doesn\rquote t prevent any Big Brother (i.e. third \f1\endash\f0  party) influence or knowledge of the data. With all this in mind, we have to create a solution whereby commercial and financial information and value can be exchanged and stored without any fear of third \f1\endash\f0  party influence. \par
+Bitcoin has proved very useful in creating a crypto \f1\endash\f0  anarchical system of electronic cash, and it has been deployed as a digitally scalable monetary system. Unfortunately, its volatility (very unstable price), slow transaction times and very large data size, have all contributed to the little adoption of Bitcoin by most financial and economic institutions. The goal of this project is to build a system that can be relied on by both bureaucrats, socialists and capitalists as well as exist independently without a central figure of control. With this goal, in mind, I will now elucidate on its structure.\par
+
+\pard\fi720\sa160\sl259\slmult0\tx360\par
+\b\fs40 2. Transactions:\par
+
+\pard\sa160\sl259\slmult0\tab\b0\fs28 Because of the mulit-currency support of XBucks, XBucks is going to use an instance of electronic money to facilitate transactions. This electronic money will be a data packet that contains:\par
+
+\pard 
+{\pntext\f0 i.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pnlcrm{\pntxta.}}
+\fi-360\li720\sa160\sl259\slmult0 the amount spent\par
+{\pntext\f0 ii.\tab}the native currency (currency of the sender) \par
+{\pntext\f0 iii.\tab}the currency to be converted to\par
+{\pntext\f0 iv.\tab}the sender's identity\par
+
+\pard\sa160\sl259\slmult0 This electronic money will be defined alongside the receiver's IXAN (\b I\b0 nternational \b X\b0 Bucks \b A\b0 ccount \b N\b0 umber) in the transaction. Then the transaction's time of occurence will be added to the transaction before the sender signs the transaction and propagates it round the network. The transaction has to pass through a series of validation steps which will endorse the transaction for mining. The transaction can be endorsed if and only if:\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent360{\pntxtb\'B7}}\fi-360\li720\sa160\sl259\slmult0 It\rquote s signature is verified and correct with respect to the public key\par
+{\pntext\f2\'B7\tab}If the amount is less than or equal to the amount in the user\rquote s state of accounts.\par
+{\pntext\f2\'B7\tab}The recipient is a valid user on the network.\par
+
+\pard\sa160\sl259\slmult0 Now, what will happen if we allow transactions to be entered into the system without control? Of course, the first transaction to be propagated matters so we do not care about later attempts to double \f1\endash\f0  spend. We can only achieve such a feat if it is possible to make the whole system agree on a single history of transactions. But the problem is that transactions can occur at the same time and be circulated at the first time. So we will have to find out how we are going to record transactions on the chain, update balances and make correct changes to the state without any risk of an attack.\par
+\par
+
+\pard\sa160\sl259\slmult0\b\fs40\tab 3. Timestamping:\par
+
+\pard\li720\sa160\sl259\slmult0\b0\fs28 A major part of my solution begins with a timestamp server, easily identifiable with X posts, but differs a bit with respect to banking ledgers. Our solution consists of 2 major parts:\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent360{\pntxtb\'B7}}\fi-360\li1080\sa160\sl259\slmult0 Settlement and clearing system.\par
+{\pntext\f2\'B7\tab}Ledger database (with a LevelDB system).\par
+
+\pard\li720\sa160\sl259\slmult0 Transactions are stored in the ledger as microformats (String data streamed down to mnemonics that can cause data transformations 1kB \f1\endash\f0  40B, 50kB \f1\endash\f0  250B). If two transactions are confirmed at the same time, a document called \i an event \i0 is created by linking two or more transactions in the same microformat, more like a Merkle tree. Each transaction will know about the other transactions that were confirmed in the same time frame with it. The settlement and clearing system connects the ledger and the state to the mempool (cache of unconfirmed transactions). It will create authenticated changes to the state and the mempool, with respect to the changes in ledger. But, to ensure that false changes are not made to the system, an anti \f1\endash\f0  spam system has to be put into place to reward honest nodes for maintaining the chain and punish attackers from overriding the chain.\par
+\par
+\b\fs40 4. Proof of Diplomacy:\b0\fs28\par
+To ensure proper append \f1\endash\f0  only and read \f1\endash\f0  only file access, a timestamping scheme will be used to checkmate the effort of attackers to overhaul the chain. The process occurs as thus:\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent360{\pntxtb\'B7}}\fi-360\li1080\sa160\sl259\slmult0 Since, two people cannot have the same thought at the same time, a transaction has to be verified by n independent stakeholders\par
+{\pntext\f2\'B7\tab}Each computes a simple Hashcash puzzle, and appends it to the transaction. \par
+{\pntext\f2\'B7\tab}The Hashcash puzzle will be increased if the same user tries to confirm it again.\par
+{\pntext\f2\'B7\tab}It increases (with an additional zero collision) until n confirmations have been made\par
+{\pntext\f2\'B7\tab}But if different users confirm it, the Hashcash puzzle will be easier to compute.\par
+{\pntext\f2\'B7\tab}Hashcash puzzles such as this are easy to verify, so hackers will not transfer false money or double - spend coins\par
+
+\pard\li720\sa160\sl259\slmult0 Now, it is easy to verify because the transaction will carry evidence of how the Hashcash puzzle chain was solved. And as such, nonces showing increased partial hash inversions will make the user trust the transaction and append it to their own copy of the ledger. When such problem is overcome, the other nodes are notified and they suspend mining activities to receive the latest transaction and modify their state. \par
+\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent360{\pntxtb\'B7}}\fi-360\li720\sa160\sl259\slmult0\b\fs40 Network:\par
+
+\pard\li720\sa160\sl259\slmult0\b0\fs28 The network operates on a Gossip protocol, whereby each member of the network does well to receive the data and transfer it to their neighbours via a HTTP protocol. New broadcasts perform a handshake with live nodes which establishes a connection as well as establishes the DNS register of nodes on the network. \par
+\par
+
+\pard{\pntext\f2\'B7\tab}{\*\pn\pnlvlblt\pnf2\pnindent360{\pntxtb\'B7}}\fi-360\li720\sa160\sl259\slmult0\b\fs40 Mining:\par
+
+\pard\li720\sa160\sl259\slmult0\b0\fs28 The process of timestamping and record \f1\endash\f0  keeping can be said to be mining, due to the fact that managing existing money in the system also enables creation of new money. This record - keeping system also has incentives for participants. For constantly maintaining the transaction system, miners (or stakeholders) are paid. Transaction fees from the transactions being mined are added to the miner reward which acts as an incentive to make the user want to mine more transactions.\par
+\par
+
+\pard\sa160\sl259\slmult0\par
+
+\pard\sa160\sl259\slmult0\b\par
+
+\pard\li720\sa160\sl259\slmult0\b0\par
+
+\pard\sa200\sl276\slmult1\fs22\par
+}
+ 
