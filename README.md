@@ -60,7 +60,9 @@ XBucks features a premium **PalmPay-inspired** design system optimized for high-
    ```powershell
    pip install kivy web3 requests
    ```
-2. **Launch Application**:
+2. **Unzip `xbucks.zip` to the folder of the repo**
+   
+3. **Launch Application**:
    ```powershell
    python ui/main.py
    ```
@@ -83,3 +85,4 @@ XBucks features a premium **PalmPay-inspired** design system optimized for high-
 ---
 
 © 2025 XBucks Financial Technologies. All Rights Reserved.
+
