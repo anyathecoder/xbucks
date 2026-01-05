@@ -3,6 +3,10 @@
 
 Welcome to **XBucks**, a production-grade decentralized financial application (DeFi) that merges the convenience of traditional mobile banking (PalmPay style) with the power of blockchain infrastructure.
 
+![Screenshot_1-1-2026_121336_](https://github.com/user-attachments/assets/025d0f3a-cfa7-42b8-b0ca-c4722e36d814)
+
+![Screenshot_1-1-2026_122351_](https://github.com/user-attachments/assets/357f7ae1-2fbb-4b0b-bd8f-939f6a659113)
+
 ---
 
 ## 🚀 Key Features
@@ -85,4 +89,5 @@ XBucks features a premium **PalmPay-inspired** design system optimized for high-
 ---
 
 © 2025 XBucks Financial Technologies. All Rights Reserved.
+
 
